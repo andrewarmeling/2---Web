@@ -1,0 +1,52 @@
+@charset "UTF-8";
+
+h1 {
+	font-family: "Arial";
+	text-align: center;}
+
+input[type=text] {
+	width: 55%;
+	border: 1px solid black;
+    border-radius: 2px;
+    margin: 10px 0;
+	font-family: "Arial";
+}
+
+input[type=text]:focus {
+    border: 1px solid lightblue;
+    border-radius: 2px;
+}
+
+input[type=password] {
+	width: 55%;
+	border: 1px solid black;
+    border-radius: 2px;
+    margin: 10px 0;
+	font-family: "Arial";
+}
+
+input[type=password]:focus {
+    border: 1px solid lightblue;
+    border-radius: 2px;
+}
+
+input[type=submit] {
+	width: 40%;
+	border: 1px solid black;
+    border-radius: 3px;
+    margin: 10px 0;
+    background-color: grey;
+    color: white;
+	font-family: "Arial";
+}
+
+form {
+	position: absolute;
+	width: 30%;
+	left: 35%;
+	text-align: center;
+	border: 2px solid grey;
+	border-radius: 6px;
+	margin: 15px;
+	background-color: #f1f1f1;
+}
