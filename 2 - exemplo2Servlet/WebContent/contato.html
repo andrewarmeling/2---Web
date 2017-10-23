@@ -4,10 +4,12 @@
 <meta charset="UTF-8">
 <title>Página de contato</title>
 <link rel="stylesheet" href="contato.css"></link>
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+<script src=contato.js> </script>
 </head>
 <body>
 	<h1>Página de contato!</h1><br><br>
-	<form id='formulario' action='insereContato' method="get">
+	<form id='formulario' action='insereContato' method="post">
 		<input id='nome' name='nome' type='text' placeholder='nome'/> <br>
 		<input id='senha' name='senha' type='password' placeholder='senha'/> <br>
 		<input id='entrar' name='entrar' type='submit' value='Entrar'> <br>
