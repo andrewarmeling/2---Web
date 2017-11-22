@@ -1,6 +1,6 @@
 SENAI = new Object();
 
-$(document).ready(function() {
+$(document).ready( function() {
 	$("#cadastroContato").load("resources/contato/cadastrarContato.html");
-	$("#listaContatos").load("resources/contato/consultarContato");
+	$("#listaContatos").load("resources/contato/consultarContato.html");
 });
