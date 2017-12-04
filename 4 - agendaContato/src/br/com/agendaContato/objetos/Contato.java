@@ -6,10 +6,17 @@ public class Contato implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
+	private int id;
 	private String nome;
 	private String endereco;
 	private String telefone;
 	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public String getNome() {
 		return nome;
 	}
@@ -28,5 +35,6 @@ public class Contato implements Serializable {
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
+
 
 }

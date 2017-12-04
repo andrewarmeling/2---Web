@@ -41,7 +41,7 @@ public class CadastroContato extends HttpServlet {
 			conec.fecharConexao();
 
 			Map<String, String> msg = new HashMap<String, String>();
-
+			
 			if (retorno) {
 				msg.put("msg", "Contato cadastrado com sucesso.");
 			} else {
