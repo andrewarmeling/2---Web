@@ -1,31 +1,29 @@
-<script type="text/javascript" src="resources/contato/js/contato.js"></script>
-
 <fieldset class="conteudo-fieldset">
 	<legend>Consulta de Contato</legend>
-	
+
 	<div>
 		Digite o nome do contato: <input id="consultarContato" type="text"></input>
-		<input id="consultarContato" type="button" value="Buscar" onClick="SENAI.contato.buscar()" />
+		<input id="consultarContato" type="button" value="Buscar"
+			onClick="SENAI.contato.buscar()" />
 	</div>
 
 	<div id="resultadoContatos" class="divResultado"></div>
 
 </fieldset>
 
-<div id="editarContato" style="display:none">
+<div id="editarContato" style="display: none">
 
 	<div class="div-form">
-		<label>Nome: </label>
-		<input id="nomeEdit" name="nome" type="text"></input>	
+		<label>Nome: </label> <input id="nomeEdit" name="nome" type="text"></input>
 	</div>
 	<div class="div-form">
-		<label>Endereço: </label>
-		<input id="enderecoEdit" name="endereco" type="text"></input>
+		<label>Endereço: </label> <input id="enderecoEdit" name="endereco"
+			type="text"></input>
 	</div>
 	<div class="div-form">
-		<label>Telefone: </label>
-		<input id="TelEdit" name="telefone" type="text">
+		<label>Telefone: </label> <input id="telEdit" name="telefone"
+			type="text">
 	</div>
-<input name="idContato" id="idContatoEdit" type="hidden"></input>
+	<input name="idContato" id="idContatoEdit" type="hidden"></input>
 
 </div>

@@ -41,7 +41,7 @@ public class CadastroContato extends HttpServlet {
 			conec.fecharConexao();
 
 			Map<String, String> msg = new HashMap<String, String>();
-			
+
 			if (retorno) {
 				msg.put("msg", "Contato cadastrado com sucesso.");
 			} else {
@@ -58,12 +58,14 @@ public class CadastroContato extends HttpServlet {
 			e.printStackTrace();
 		}
 	}
-	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		process(request, response);
 	}
 
-	protected void doPost (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		process(request, response);
 	}
 }

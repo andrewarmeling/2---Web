@@ -44,7 +44,7 @@ $(document)
 						var valorBusca = $("#consultarContato").val();
 						SENAI.contato.exibirContatos(undefined, valorBusca);
 					};
-					// rotina que os contatos cadastrados
+
 					SENAI.contato.exibirContatos = function(listaDeContatos,
 							valorBusca) {
 						var html = "<table class='table'>";
@@ -62,7 +62,6 @@ $(document)
 										+ "<td>"
 										+ listaDeContatos[i].telefone
 										+ "</td>"
-
 										+ "<td>"
 										+ "<a class= 'link' href='#' onclick='SENAI.contato.editarContato("
 										+ listaDeContatos[i].id
@@ -90,7 +89,7 @@ $(document)
 											}
 										});
 							} else {
-								html += "<tr><td  colspan='3'>Nenhum registro encontrado</td></tr>";
+								html += "<tr><td colspan='3'>Nenhum registro encontrado</td></tr>";
 
 							}
 						}
@@ -99,5 +98,111 @@ $(document)
 					};
 
 					SENAI.contato.exibirContatos(undefined, "");
+
+					SENAI.contato.deletarContato = function(id) {
+						$.ajax({
+							type : "POST",
+							url : "DeletaContato",
+							data : "id=" + id,
+							success : function(data) {
+								var cfg = {
+									title : "Mensagem",
+									height : 250,
+									width : 400,
+									modal : true,
+									buttons : {
+										"Ok" : function() {
+											$(this).dialog("close");
+										}
+									}
+								};
+								$("#msg").html(data.msg);
+								$("#msg").dialog(cfg);
+
+								SENAI.contato.buscar();
+							},
+							error : function(rest) {
+								alert("Erro ao deletar os contatos");
+							}
+						})
+					}
+
+					SENAI.contato.editarContato = function(id) {
+						$.ajax({
+							type : "POST",
+							url : "ConsultaContatoPorId",
+							data : "id=" + id,
+							success : function(conta) {
+								$("#nomeEdit").val(conta.nome);
+								$("#enderecoEdit").val(conta.endereco);
+								$("#telEdit").val(conta.telefone);
+								$("#idContatoEdit").val(conta.id);
+								SENAI.contato.exibirEdicao(conta);
+							},
+							error : function(rest) {
+								alert("Erro ao editar o contato");
+							}
+
+						});
+					}
+
+					SENAI.contato.exibirEdicao = function(conta) {
+						var cfg = {
+							title : "Editar Contato",
+							height : 400,
+							width : 550,
+							modal : true,
+							buttons : {
+								"Salvar" : function() {
+									var dialog = this;
+									var newConta = "nome="
+											+ $("#nomeEdit").val()
+											+ "&endereco="
+											+ $("#enderecoEdit").val()
+											+ "&telefone="
+											+ $("#telEdit").val() + "&id="
+											+ $("#idContatoEdit").val();
+									$.ajax({
+										type : "POST",
+										url : "EditarContato",
+										data : newConta,
+										success : function(data) {
+											$(dialog).dialog("close");
+
+//											--------
+											
+												var cfg = {
+													title : "Mensagem",
+													height : 300,
+													width : 400,
+													modal : true,
+													buttons : {
+														"Ok" : function() {
+															$(this).dialog("close");
+														}
+													}
+												};
+												$("#msg").html(data.msg);
+												$("#msg").dialog(cfg);
+									
+//											--------
+												
+											SENAI.contato.buscar();
+										},
+										error : function(rest) {
+											alert("Erro ao editar o contato");
+										}
+									});
+								},
+								"Cancelar" : function() {
+									$(this).dialog("close");
+								}
+							},
+							close : function() {
+							}
+
+						};
+						$("#editarContato").dialog(cfg);
+					};
 
 				});
