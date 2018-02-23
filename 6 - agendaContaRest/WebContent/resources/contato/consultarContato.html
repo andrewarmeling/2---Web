@@ -1,0 +1,27 @@
+<fieldset>
+	<legend>Consulta de Contatos</legend>
+		<label>Digite o nome do Contato:</label>
+		<input type="text" id="consultarContato">
+		<button type="button" onclick="SENAI.contato.buscar()">Buscar</button>
+		
+	<div id="resultadoContatos"></div>
+	
+	<div id="editarContato" style="display: none">
+			<label>Nome:</label>
+			<input type="text" name="txtnome" id="nomeEdit">
+			<label>Endereço:</label>
+			<input type="text" name="txtendereco" id="enderecoEdit">	
+			<label>Telefone:</label>
+			<input type="text" name="txttelefone" id="telefoneEdit">
+			<label>E-mail:</label>
+			<input type="text" name="txtemail" id="emailEdit">
+			<label>Senha:</label>
+			<input type="password" name="txtsenha" id="senhaEdit">
+			<label>Repita a Senha:</label>
+			<input type="password" id="confirmaSenhaEdit"><br>
+		<input name="idContato" id="idContatoEdit" type="hidden">
+	</div>
+	
+</fieldset>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<fieldset>
+	<legend>Cadastro de Contato</legend>
+	<form>
+		<label>Nome:</label>
+		<input type="text" name="txtnome" id="nome">
+		<label>Endereço:</label>
+		<input type="text" name="txtendereco" id="endereco">	
+		<label>Telefone:</label>
+		<input type="text" name="txttelefone" id="telefone">
+		<label>E-mail:</label>
+		<input type="text" name="txtemail" id="email">
+		<label>Senha:</label>
+		<input type="password" name="txtsenha" id="senha">
+		<label>Repita a Senha:</label>
+		<input type="password" id="confirmaSenha"><br>
+		<button type="button" onclick="SENAI.contato.cadastrar()">Enviar</button>
+		<button type="reset">Limpar Campos</button>
+	</form>
+</fieldset>
+
+<div id="msg" style="display: none"></div>
