@@ -17,32 +17,32 @@ function ajaxRequestDefault() {
 
 	return def;
 
-	function verifyObjectData(cfg) {
-		if (cfg.data) {
-			if (isObject(cfg.data)) {
-				cfg.data = JSON.stringify(cfg.data);
-			}
-		}
-		return cfg;
-	}
-
-	function isObject(o) {
-		return $.isArray(o) | $.isPlainObject(o) | $.isFunction(o);
-	};
-
-	SENAI.ajax.post = function(cfg) {
-		var def = new ajaxRequestDefault();
-		cfg = verifyObjectData(cfg);
-		var config = $.extend(def, cfg);
-		$.ajax(config);
-	};
-
-	SENAI.ajax.get = function(cfg) {
-		var def = new ajaxRequestDefault();
-		cfg.type = "GET";
-		cfg = verifyObjectData(cfg);
-		var config = $.extend(def, cfg);
-		$.ajax(config);
-	};
-
 }
+
+function verifyObjectData(cfg) {
+	if (cfg.data) {
+		if (isObject(cfg.data)) {
+			cfg.data = JSON.stringify(cfg.data);
+		}
+	}
+	return cfg;
+}
+
+function isObject(o) {
+	return $.isArray(o) | $.isPlainObject(o) | $.isFunction(o);
+};
+
+SENAI.ajax.post = function(cfg) {
+	var def = new ajaxRequestDefault();
+	cfg = verifyObjectData(cfg);
+	var config = $.extend(def, cfg);
+	$.ajax(config);
+};
+
+SENAI.ajax.get = function(cfg) {
+	var def = new ajaxRequestDefault();
+	cfg.type = "GET";
+	cfg = verifyObjectData(cfg);
+	var config = $.extend(def, cfg);
+	$.ajax(config);
+};
