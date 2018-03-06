@@ -88,7 +88,48 @@ $(document)
 
 					SENAI.contato.exibirContatos = function(listaDeContatos,
 							valorBusca) {
-						alert("Ainda não implementada");
+						
+						var html = "<table class='table'>";
+						html += "<tr><th>Nome</th><th>Endereço</th><th>Email</th><th>Ações</th></tr>";
+						
+						if(listaDeContatos != undefined && listaDeContatos.length > 0) {
+							for (var i=0; i < listaDeContatos.lenght; i++) {
+								html += "<tr><td>" + listaDeContatos[i].nome + "</td>" +
+								"<td>" + listaDeContatos[i].endereco + "</td>" +
+								"<td>" + listaDeContatos[i].email + "</td>" +
+								"<td><a class='link' onclick='SENAI.contato.editarContato(" + listaDeContatos[i].id + ")'>" +
+								"<img src='resources/contato/img/edit.png'></a>" +
+								"<a class='link' onclick='SENAI.contato.deletarContato(" + listaDeContatos[i].id + ")'>" +
+								"<img src='resources/contato/img/remove.png'></a></td></tr>";
+							}
+						} else {
+							if(listaDeContatos == undefined) {
+								if(valorBusca == "") {
+									valorBusca = null;
+								}
+								
+								var cfg = {
+										type: "POST",
+										url: "rest/contatoRest/buscarContatosPorNome/" + valorBusca,
+										success: function (listaDeContatos) {
+											SENAI.contato.exibirContatos(listaDeContatos);
+										},
+										
+										error: function (err) {
+											alert("Erro ao consultar os contatos: " +err.responseText);
+										}
+								};
+								
+								SENAI.ajax.post(cfg);
+							} else {
+								html += "<tr><td colspan='3'>Nenhum registro encontrado</td>,/tr>";
+							}
+						}
+						
+						html += "</table>";
+						$("#resultadoContatos").html(html);						
 					};
+					
+					SENAI.contato.exibirContatos(undefined, "");
 
 				})
