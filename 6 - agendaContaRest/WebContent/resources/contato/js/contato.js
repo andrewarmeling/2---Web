@@ -212,15 +212,14 @@ $(document)
 							modal : true,
 							buttons : {
 								"Salvar" : function() {
-									var dialog
-									this;
+									var dialog = this;
 									var contato = new Object();
-									contato.id = $("idContatoEdit").val();
-									contato.nome = $("nomeEdit").val();
-									contato.endereco = $("enderecoEdit").val();
-									contato.telefone = $("telefoneEdit").val();
-									contato.email = $("emailEdit").val();
-									contato.senha = $("senhaEdit").val();
+									contato.id = $("#idContatoEdit").val();
+									contato.nome = $("#nomeEdit").val();
+									contato.endereco = $("#enderecoEdit").val();
+									contato.telefone = $("#telefoneEdit").val();
+									contato.email = $("#emailEdit").val();
+									contato.senha = $("#senhaEdit").val();
 
 									var cfg = {
 										type : "POST",
@@ -246,7 +245,7 @@ $(document)
 							}
 						};
 
-						$("#editarCntato").dialog(cfg);
+						$("#editarContato").dialog(cfg);
 					};
 
 				})

@@ -81,7 +81,7 @@ public class ContatoRest extends UtilRest {
 	}
 
 	@POST
-	@Path("buscarContatoPeloId/{id}")
+	@Path("/buscarContatoPeloId/{id}")
 	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
 	public Response buscarContatoPeloId(@PathParam("id") int id) {
 		try {
@@ -99,7 +99,7 @@ public class ContatoRest extends UtilRest {
 
 	@POST
 	@Path("/editarContato")
-	@Consumes("application/")
+	@Consumes("application/*")
 	public Response editarContato(String contatoParam) {
 		try {
 			Contato contato = new ObjectMapper().readValue(contatoParam, Contato.class);

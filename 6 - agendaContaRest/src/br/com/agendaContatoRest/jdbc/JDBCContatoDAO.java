@@ -120,7 +120,6 @@ public class JDBCContatoDAO implements ContatoDAO {
 
 	}
 
-	@Override
 	public boolean atualizar(Contato contato) {
 		boolean senhaEditada = false;
 		String comando = "UPDATE contato SET nome=?, endereco=?, telefone=?, email=?";
