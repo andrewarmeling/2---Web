@@ -147,37 +147,54 @@ $(document)
 					SENAI.contato.exibirContatos(undefined, "");
 
 					SENAI.contato.deletarContato = function(id) {
-						var cfg = {
-							type : "POST",
-							url : "rest/contatoRest/deletarContato/" + id,
-							success : function(data) {
-								// ----------//
 
-								var cfg = {
-									title : "Mensagem",
-									height : 250,
-									width : 400,
-									modal : true,
-									buttons : {
-										"OK" : function() {
-											$(this).dialog("close");
+						var confirm = {
+							title : "Mensagem",
+							height : 250,
+							width : 400,
+							modal : true,
+							buttons : {
+								"Sim" : function() {
+									var cfg = {
+										type : "POST",
+										url : "rest/contatoRest/deletarContato/"
+												+ id,
+										success : function(data) {
+
+											var cfg = {
+												title : "Mensagem",
+												height : 250,
+												width : 400,
+												modal : true,
+												buttons : {
+													"OK" : function() {
+														$(this).dialog("close");
+													}
+												}
+											};
+											$("#msg").html(data);
+											$("#msg").dialog(cfg);
+											SENAI.contato.buscar();
+
+										},
+										error : function(err) {
+											alert("Erro ao deletar o contato: "
+													+ err.responseText);
 										}
-									}
-								};
-								$("#msg").html(data);
-								$("#msg").dialog(cfg);
-								SENAI.contato.buscar();
 
-								// ---------//
-							},
-							error : function(err) {
-								alert("Erro ao deletar o contato: "
-										+ err.responseText);
+									};
+
+									SENAI.ajax.post(cfg);
+								},
+								"Não" : function() {
+									$(this).dialog("close");
+								}
 							}
 
-						};
+						}
 
-						SENAI.ajax.post(cfg);
+						$("#msg").html("Deseja excluir este contato?");
+						$("#msg").dialog(confirm);
 					};
 
 					SENAI.contato.editarContato = function(id) {
@@ -225,9 +242,26 @@ $(document)
 										type : "POST",
 										url : "rest/contatoRest/editarContato",
 										data : contato,
-										success : function() {
+										// ----------//
+										success : function(data) {
+											var cfg = {
+												title : "Mensagem",
+												height : 250,
+												width : 400,
+												modal : true,
+												buttons : {
+													"OK" : function() {
+														$(this).dialog("close");
+													}
+												}
+											};
+											$("#msg").html(data);
+											$("#msg").dialog(cfg);
 											$(dialog).dialog("close");
 											SENAI.contato.buscar();
+
+											// ---------//
+
 										},
 										error : function(err) {
 											alert("Erro ao editar o contato!"
